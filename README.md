@@ -7,22 +7,24 @@
   Windows: `py -m pip install unpacktools`
   Ubuntu/Linux: `python3 -m pip install unpacktools`
 ## Our Challenge
-  We didn't and won't use any asterisks in our source code to unpack iterators. We unpack them with our own algorithm. -But I don't mean that we do not use *args.-
+  We didn't and won't use any asterisks in our source code to unpack iterators. We unpack them with our own algorithm. -Of course, I don't mean that we do not use *args.-
 ## Features
 Note: To work with the examples below, you should import the package as: `from unpacktools.unpack import *`
 * You can pass unpack objects to handled functions. Example:
   ```python3
-  @func_handler #foo will be able to take unpack objects! Yayy!
+  @func_handler
   def foo(a, b, c, d) -> "a + b + c + d" :
       return a + b + c + d
-      
+  ```
+  Now, check if it works:
+  ```
   result0 = foo(1, 2, 3, 4) # Please note that it is not not a requirement to pass unpack objects to your handled-or decorated- function. 
   #'Resolving unpack objects' is just an *extra* feature added to your function.
   result1 = foo( unpack([1,2,3,4]) )
   result2 = foo( unpack([ 1,2, unpack([3,4]) ]) ) #Deep `unpack`s are allowed and works fine.
   result3 = foo( unpack([1,2]),3,4 ) #You can use a mixture of unpack and other kind of objects.
 
-  print(result0, result1, result2, result3)
+  print(result0, result1, result2, result3) # 10, 10, 10, 10
   ```
 * You can also handle multiple functions at one time using `multi_func_handler`. Note that it returns a dictionary by default(You can change the argument "rt_type").
   ### Usage-1 :
