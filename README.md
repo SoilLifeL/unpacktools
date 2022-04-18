@@ -17,7 +17,7 @@ Note: To work with the examples below, you should import the package as: `from u
       return a + b + c + d
   ```
   Now, check if it works:
-  ```
+  ```python3
   result0 = foo(1, 2, 3, 4) # Please note that it is not not a requirement to pass unpack objects to your handled-or decorated- function. 
   #'Resolving unpack objects' is just an *extra* feature added to your function.
   result1 = foo( unpack([1,2,3,4]) )
