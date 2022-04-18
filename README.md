@@ -7,7 +7,7 @@
   Windows: `py -m pip install unpacktools`
   Ubuntu/Linux: `python3 -m pip install unpacktools`
 ## Our Challenge
-  We didn't and won't use any asterisks in our source code.
+  We didn't and won't use any asterisks in our source code to unpack iterators. We unpack them with our own algorithm.
 ## Features
 Note: To work with the examples below, you should import the package as: `from unpacktools.unpack import *`
 * You can pass unpack objects to handled functions. Example:
