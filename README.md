@@ -6,11 +6,11 @@
 ## Installation
   Windows: `py -m pip install unpacktools`
   Ubuntu/Linux: `python3 -m pip install unpacktools`
-## Our Challenge
+## Our 'Challenge'
   We didn't and won't use any asterisks in our source code to unpack iterators. We unpack them with our own algorithm. -Of course, I don't mean that we do not use *args.-
 ## Features
 Note: To work with the examples below, you should import the package as: `from unpacktools.unpack import *`
-* You can pass unpack objects to handled functions. Example:
+* You can pass unpack objects to 'handled' functions. To handle a single function, you can use a decorator:
   ```python3
   @func_handler
   def foo(a, b, c, d) -> "a + b + c + d" :
@@ -26,7 +26,7 @@ Note: To work with the examples below, you should import the package as: `from u
 
   print(result0, result1, result2, result3) # 10, 10, 10, 10
   ```
-* You can also handle multiple functions at one time using `multi_func_handler`. Note that it returns a dictionary by default(You can change the argument "rt_type").
+* You can also handle multiple functions at one time using `multi_func_handler`. Please note that it returns a dictionary by default(You can change the argument "rt_type").
   ### Usage-1 :
     ```python3
     def foo(a, b, c, d) -> "a + b + c + d" :
@@ -72,7 +72,7 @@ Note: To work with the examples below, you should import the package as: `from u
         pass
     globals().update( multi_class_handler(Foo, Bar) ) #You can also use locals() instead of globals()
     ```
-* You can handle the whole scope with `scope_handler`. Arguments: `(scope, funcs = True, classes = True, dunders = False)`. Usage:
+* Lazy? You can handle the whole scope with `scope_handler`. Arguments: `(scope, funcs = True, classes = True, dunders = False)`. Usage:
   ```python3
   def foo_bar(x,y,z):
       pass
