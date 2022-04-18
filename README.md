@@ -1,8 +1,7 @@
 # Basic Unpack Toolkit
 
 ## What Is It and What Does It Do?
-  It is an alternative toolkit to `functools.reduce` -though there are lots of differences between them-. It enables you to unpack iterators without the usage of asterisk.
-  Increases readibility level (for those who do not like using an asterisk).
+  It is an alternative toolkit to `functools.reduce` -though there are lots of differences between them-. It enables you to unpack iterators without the usage of asterisk and increases readibility level (for those who do not like using an asterisk).
 ## Installation
   Windows: `py -m pip install unpacktools`
   Ubuntu/Linux: `python3 -m pip install unpacktools`
