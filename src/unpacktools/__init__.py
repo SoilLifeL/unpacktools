@@ -1,1 +1,1 @@
-__all__ = ["unpack"]
+from unpack import *
