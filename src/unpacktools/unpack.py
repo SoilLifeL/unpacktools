@@ -15,7 +15,8 @@ class unpack:
         return f"unpack({self.iterator})"
 
 def func_handler(func):
-    def new_func(*args) -> "INFO: "+ str(inspect.getfullargspec(func)): 
+    func_info = str(inspect.getfullargspec(func))[12:-1]
+    def new_func(*args) -> "Original Info: "+ func_info: 
         nonlocal func
         handled_args = []
         for i in args:
