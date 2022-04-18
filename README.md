@@ -6,7 +6,7 @@
   Windows: `py -m pip install unpacktools`
   Ubuntu/Linux: `python3 -m pip install unpacktools`
 ## Features
-Note: To work with the examples below, you should import the package as: `from unpacktools.unpack import *`
+*Note: To work with the examples below, you should import the package as: `from unpacktools.unpack import *`*
 * You can pass unpack objects to 'handled' functions. To handle a single function, you can use a decorator:
   ```python3
   @func_handler
