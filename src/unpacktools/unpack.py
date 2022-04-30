@@ -1,15 +1,17 @@
 import inspect
 class unpack:
     def __init__(self,iterator):
-        new_iter = []
-        for item in iterator:
-            if type(item) == type(unpack([])):
-                new_iter.extend(i for i in item.iterator)
-            elif hasattr(item, "__iter__"):
-                new_iter.append(unpack.handle_iter(item))
-            else:
-                new_iter.append(item)
-        self.iterator = new_iter
+        def handle_iter(iterator):
+            new_iter = []
+            for item in iterator:
+                if type(item) == type(unpack([])):
+                    new_iter.extend(i for i in item.iterator)
+                elif hasattr(item, "__iter__") and type(item)!= type(str()):
+                    new_iter.append(handle_iter(item))
+                else:
+                    new_iter.append(item)
+            return new_iter
+        self.iterator = handle_iter(iterator)
         
     def __repr__(self):
         return f"unpack({self.iterator})"
@@ -18,13 +20,17 @@ def func_handler(func):
     func_info = str(inspect.getfullargspec(func))[12:-1]
     def new_func(*args) -> "Original Info: "+ func_info: 
         nonlocal func
-        handled_args = []
-        for i in args:
-            if type(i) == type( unpack([]) ):
-                handled_args.extend( i.iterator )
-            else:
-                handled_args.append(i)
-        return func(*handled_args)
+        def arg_resolver(arg_list):
+            handled_arg_list = []
+            for i in arg_list:
+                if type(i) == type( unpack([]) ):
+                    handled_arg_list.extend( i.iterator )
+                elif hasattr(i,"__iter__") and type(i) != type(str()):
+                    handled_arg_list.append(arg_resolver(i))
+                else:
+                    handled_arg_list.append(i)
+            return handled_arg_list
+        return arg_resolver(args)
     return new_func
 
 def multi_func_handler(*funcs, rt_type = dict ):
@@ -43,8 +49,7 @@ def class_handler(cls):
         class_methods.update({method.__name__:func_handler(method)})
     class_methods_new = {}
     for i in class_methods.keys():
-        if not i.startswith("_r_"):
-            class_methods_new[i] = class_methods[i]
+        class_methods_new[i] = class_methods[i]
     for method_name in class_methods_new.keys():
         setattr(cls,method_name,class_methods_new[method_name])
     return cls
