@@ -30,7 +30,7 @@ def func_handler(func):
                 else:
                     handled_arg_list.append(i)
             return handled_arg_list
-        return arg_resolver(args)
+        return func(*arg_resolver(args))
     return new_func
 
 def multi_func_handler(*funcs, rt_type = dict ):
